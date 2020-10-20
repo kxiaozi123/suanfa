@@ -2,7 +2,7 @@ package com.imooc.test.list;
 
 
 
-public class MyArrayList<E> {
+public class MyArrayList<E> implements MyList<E> {
     //两个成员变量 size 和elements
     private int size;
     private E[] elements;
@@ -123,7 +123,7 @@ public class MyArrayList<E> {
        //扩容
         ensureCapacity(size + 1);
         for (int i = size; i >index; i--) {
-            elements[i+1]=elements[i];
+            elements[i]=elements[i-1];
         }
         elements[index]=element;
         size++;
@@ -139,6 +139,10 @@ public class MyArrayList<E> {
         }
         elements=newElements;
 
+    }
+    public void remove(E element)
+    {
+        remove(indexOf(element));
     }
 
     //数组toSting方法
@@ -158,8 +162,24 @@ public class MyArrayList<E> {
 
     //测试MyArrayList
     public static void main(String[] args) {
-        MyArrayList list = new MyArrayList();
-        list.add(1);
+//        MyArrayList<String> list=new MyArrayList();
+//        list.add("100");
+//        list.add("100");
+//        list.add("2");
+//        list.add("3");
+//        System.out.println(list);
+////        System.out.println(list);
+////        System.out.println(list.indexOf(1));
+//        list.remove("100");
+//        list.remove("100");
+//        //list.remove("100");
+//        System.out.println(list);
+//        MyArrayList list = new MyArrayList();
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(0,1);
+//        System.out.println(list);
         /*list.add(1);
         list.add(2);
         list.add(0,5);
