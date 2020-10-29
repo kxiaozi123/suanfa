@@ -1,12 +1,13 @@
 package com.imooc.test.array;
 
 
+import com.imooc.test.linked.AbstractList;
+
 @SuppressWarnings("unchecked")
-public class ArrayList<E> {
-    private int size;
+public class ArrayList<E> extends AbstractList<E> {
+
     private E [] elements;
     private static final int DEFAULT_CAPACITY=10;
-    private static final int ELEMENT_NOT_FOUND=-1;
     public ArrayList(int capacity)
     {
         capacity= Math.max(capacity, DEFAULT_CAPACITY);
@@ -16,10 +17,7 @@ public class ArrayList<E> {
     {
         this(DEFAULT_CAPACITY);
     }
-    public int size()
-    {
-        return size;
-    }
+
     public void clear()
     {
         //改成object 对象管理细节
@@ -28,10 +26,7 @@ public class ArrayList<E> {
         }
         size=0;
     }
-    public boolean isEmpty()
-    {
-        return size==0;
-    }
+
     public E get(int index)
     {
         rangeCheck(index);
@@ -65,17 +60,8 @@ public class ArrayList<E> {
         }
         return ELEMENT_NOT_FOUND;
     }
-    public boolean contains(E element)
-    {
-        return indexOf(element)!=ELEMENT_NOT_FOUND;
-    }
-    public void add(E element)
-    {
-        /*elements[size]=element;
-        size++;*/
-        //elements[size++]=element;
-        add(size,element);
-    }
+
+
     public E remove(int index)
     {
         rangeCheck(index);
@@ -99,10 +85,15 @@ public class ArrayList<E> {
         //至少保证size+1
         ensureCapacity(size+1);
 
-        for (int i = size-1; i >=index; i--) {
+        /*for (int i = size-1; i >=index; i--) {
             elements[i+1]= elements[i];
         }
+        elements[index]=element;*/
+         for (int i = size; i >index; i--) {
+            elements[i]=elements[i-1];  //都是size-1的地方 移动给size
+        }
         elements[index]=element;
+
         size++;
     }
 
@@ -125,22 +116,7 @@ public class ArrayList<E> {
 
     }
 
-    private void rangeCheck(int index) {
-        if(index<0||index>=size)
-        {
-            OutOfBounds(index);
-        }
-    }
-    private void rangeCheckForAdd(int index) {
-        if(index<0||index>size)
-        {
-            OutOfBounds(index);
-        }
-    }
 
-    private void OutOfBounds(int index) {
-        throw new IndexOutOfBoundsException("Index:" + index + ",Size:" + size);
-    }
 
     @Override
     public String toString() {
