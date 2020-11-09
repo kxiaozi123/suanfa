@@ -1,4 +1,4 @@
-package com.imooc.test.练习题;
+package com.imooc.test.力扣简单题目合集整理;
 
 /**
  * https://leetcode-cn.com/problems/guess-numbers/
