@@ -1,4 +1,4 @@
-package com.imooc.test.复习;
+package com.imooc.test.代码复习;
 
 public interface List<E> {
 	static final int ELEMENT_NOT_FOUND = -1;

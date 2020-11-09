@@ -1,4 +1,4 @@
-package com.imooc.test.练习题;
+package com.imooc.test.力扣需要看一下的题目合集;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.imooc.test.日常力扣测试;
+package com.imooc.test.力扣需要看一下的题目合集;
 
 public class _941_有效的山脉数组 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.imooc.test.每日练习题;
+package com.imooc.test.力扣需要看一下的题目合集;
 
 /**
  * https://leetcode-cn.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/

@@ -1,4 +1,4 @@
-package com.imooc.test.复习;
+package com.imooc.test.代码复习;
 
 public abstract class AbstractList<E> implements List<E> {
     protected int size;

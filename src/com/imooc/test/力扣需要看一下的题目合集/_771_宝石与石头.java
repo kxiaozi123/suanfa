@@ -1,4 +1,4 @@
-package com.imooc.test.练习题;
+package com.imooc.test.力扣需要看一下的题目合集;
 
 /**https://leetcode-cn.com/problems/jewels-and-stones/
  * 输入: J = "aA", S = "aAAbbbb"

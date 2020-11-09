@@ -1,6 +1,4 @@
-package com.imooc.test.复习;
-
-import java.awt.*;
+package com.imooc.test.代码复习;
 
 public class 斐波那契数列 {
     //0 1 2 3 4 5 6 7  8  9  10
