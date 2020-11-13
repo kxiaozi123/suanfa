@@ -1,4 +1,4 @@
-package com.imooc.test.每日力扣题目;
+package com.imooc.test.快慢指针题目;
 
 import java.util.HashSet;
 import java.util.Set;

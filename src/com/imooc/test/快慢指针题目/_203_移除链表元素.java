@@ -1,4 +1,6 @@
-package com.imooc.test.力扣ppt上三道题;
+package com.imooc.test.快慢指针题目;
+
+import com.imooc.test.力扣ppt上三道题.ListNode;
 
 /**
  * https://leetcode-cn.com/problems/remove-linked-list-elements/

@@ -1,4 +1,6 @@
-package com.imooc.test.leetcode.linked;
+package com.imooc.test.快慢指针题目;
+
+import com.imooc.test.leetcode.linked.ListNode;
 
 public class _141_环形链表 {
     public boolean hasCycle(ListNode head) {
