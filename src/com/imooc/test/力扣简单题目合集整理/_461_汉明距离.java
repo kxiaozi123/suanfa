@@ -1,4 +1,4 @@
-package com.imooc.test.每日力扣题目;
+package com.imooc.test.力扣简单题目合集整理;
 
 public class _461_汉明距离 {
     public static int hammingDistance(int x, int y) {

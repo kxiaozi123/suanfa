@@ -1,4 +1,4 @@
-package com.imooc.test.每日力扣题目;
+package com.imooc.test.力扣简单题目合集整理;
 
 import java.util.Arrays;
 
