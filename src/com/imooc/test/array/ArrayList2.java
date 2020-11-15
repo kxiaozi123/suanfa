@@ -3,17 +3,21 @@ package com.imooc.test.array;
 
 import com.imooc.test.linked.AbstractList;
 
+/**
+ * 有缩容操作
+ * @param <E>
+ */
 @SuppressWarnings("unchecked")
-public class ArrayList<E> extends AbstractList<E> {
+public class ArrayList2<E> extends AbstractList<E> {
 
     private E [] elements;
     private static final int DEFAULT_CAPACITY=10;
-    public ArrayList(int capacity)
+    public ArrayList2(int capacity)
     {
         capacity= Math.max(capacity, DEFAULT_CAPACITY);
         elements= (E[]) new Object[capacity];
     }
-    public ArrayList()
+    public ArrayList2()
     {
         this(DEFAULT_CAPACITY);
     }
@@ -91,6 +95,8 @@ public class ArrayList<E> extends AbstractList<E> {
 //        elements[size]=null;
         //最后一个设为null
         elements[--size]=null;
+        //缩容操作
+        trim();
         return old;
     }
 
@@ -122,6 +128,9 @@ public class ArrayList<E> extends AbstractList<E> {
 
     /**
      * 扩容操作
+     * 复杂度震荡 举例 假设 默认容量为4 当添加第五个元素的时间 需要扩容 为8 添加后 时间复杂度 O（n）
+     * 再执行删除操作 缩小到原来的一半 时间复杂度O（n)
+     * PS ： 扩容的指数 和缩容的指数 相乘不为1 就不会出现 复杂度震荡问题
      * @param capacity
      */
     private void ensureCapacity(int capacity) {
@@ -130,6 +139,22 @@ public class ArrayList<E> extends AbstractList<E> {
         if(oldCapacity>=capacity) return;
         //扩容操作
         int newCapacity = oldCapacity + (oldCapacity >> 1);
+        E [] newElements= (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {  //这里的循环次数用size和oldCapacity都可以
+            newElements[i]=elements[i];
+        }
+        elements=newElements;
+
+    }
+    //缩容操作
+    private void trim() {
+        int capacity = elements.length;
+        //新的容量 缩小到原来的一半
+        int newCapacity = capacity>>1;
+        // size 大于总容量的1/2 就不需要缩了
+        // 而且必须大于默认容量 不然的话 会缩到很小 参考例子 12->6->3->1 然后再扩容 扩起来很麻烦
+        if(size>=(newCapacity) ||capacity<=DEFAULT_CAPACITY) return;
+        //剩余的空间还有很多
         E [] newElements= (E[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {  //这里的循环次数用size和oldCapacity都可以
             newElements[i]=elements[i];
@@ -156,7 +181,7 @@ public class ArrayList<E> extends AbstractList<E> {
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer> list=new ArrayList<>();
+        ArrayList2<Integer> list=new ArrayList2<>();
 //        list.add(0,120);
 //        for (int i = 1; i <= 10; i++) {
 //            list.add(i);
