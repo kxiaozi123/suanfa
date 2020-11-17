@@ -1,7 +1,7 @@
 package com.imooc.test.array;
 
 
-import com.imooc.test.linked.AbstractList;
+import com.imooc.test.单链表.AbstractList;
 
 @SuppressWarnings("unchecked")
 public class ArrayList<E> extends AbstractList<E> {

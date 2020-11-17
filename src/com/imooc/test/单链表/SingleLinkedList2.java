@@ -1,4 +1,4 @@
-package com.imooc.test.linked;
+package com.imooc.test.单链表;
 
 /**
  * 虚拟头结点

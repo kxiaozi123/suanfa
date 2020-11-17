@@ -1,4 +1,4 @@
-package com.imooc.test.linked;
+package com.imooc.test.单链表;
 
 public interface List<E> {
 	static final int ELEMENT_NOT_FOUND = -1;

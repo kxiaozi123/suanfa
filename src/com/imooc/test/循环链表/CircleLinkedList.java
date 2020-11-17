@@ -1,4 +1,4 @@
-package com.imooc.test.双向链表;
+package com.imooc.test.循环链表;
 
 import com.imooc.test.单链表.AbstractList;
 
@@ -12,7 +12,7 @@ import com.imooc.test.单链表.AbstractList;
  *  频繁查询 用动态数组
  * @param <E>
  */
-public class LinkedList<E> extends AbstractList<E> {
+public class CircleLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
     private Node<E> last;
 
@@ -73,12 +73,15 @@ public class LinkedList<E> extends AbstractList<E> {
         {
             Node<E> OldLast = last;//原来的last
             //往尾部添加 就是把last 指向新添加的节点 然后原来的last的next 为新添加的节点
-            last = new Node<>(OldLast, element, null);
+            last = new Node<>(OldLast, element, first);
             //以前的last为空 就是index=0 size=0的情况
             if (OldLast == null) {
                 first = last;
+                first.next=first;
+                first.prev=first;
             } else {
                 OldLast.next = last;
+                first.prev=last;
             }
         } else {
             // 新添加节点的下一个
@@ -86,10 +89,9 @@ public class LinkedList<E> extends AbstractList<E> {
             Node<E> prev = next.prev; //null
             Node<E> node = new Node<>(prev, element, next);
             next.prev = node;
-            if (prev == null) { //index==0
+            prev.next = node;
+            if (index==0) { //index==0
                 first = node;
-            } else {
-                prev.next = node;
             }
         }
 
