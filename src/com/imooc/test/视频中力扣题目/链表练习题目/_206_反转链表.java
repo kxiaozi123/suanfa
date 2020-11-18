@@ -1,4 +1,4 @@
-package com.imooc.test.leetcode.linked;
+package com.imooc.test.视频中力扣题目.链表练习题目;
 
 public class _206_反转链表 {
         //1->2->3->4->5->null

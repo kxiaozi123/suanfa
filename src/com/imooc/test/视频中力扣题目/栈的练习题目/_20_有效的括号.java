@@ -1,9 +1,33 @@
-package com.imooc.test.视频中力扣题目;
+package com.imooc.test.视频中力扣题目.栈的练习题目;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * 示例 1:
+ *
+ * 输入: "()"
+ * 输出: true
+ * 示例2:
+ *
+ * 输入: "()[]{}"
+ * 输出: true
+ * 示例3:
+ *
+ * 输入: "(]"
+ * 输出: false
+ * 示例4:
+ *
+ * 输入: "([)]"
+ * 输出: false
+ * 示例5:
+ *
+ * 输入: "{[]}"
+ * 输出: true
+ *
+ * 链接：https://leetcode-cn.com/problems/valid-parentheses
+ */
 public class _20_有效的括号 {
     public static Map<Character, Character> map = new HashMap<>();
 

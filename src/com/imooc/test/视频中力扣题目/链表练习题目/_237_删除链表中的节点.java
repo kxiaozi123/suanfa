@@ -1,4 +1,4 @@
-package com.imooc.test.leetcode.linked;
+package com.imooc.test.视频中力扣题目.链表练习题目;
 
 /**
  * https://leetcode-cn.com/problems/delete-node-in-a-linked-list/

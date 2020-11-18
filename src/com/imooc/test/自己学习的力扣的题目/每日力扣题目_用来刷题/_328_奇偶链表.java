@@ -1,6 +1,6 @@
 package com.imooc.test.自己学习的力扣的题目.每日力扣题目_用来刷题;
 
-import com.imooc.test.leetcode.linked.ListNode;
+import com.imooc.test.视频中力扣题目.链表练习题目.ListNode;
 
 /**
  * 示例 1:
