@@ -59,13 +59,6 @@ public class SingleLinkedList<E> extends AbstractList<E> {
             Node<E> prev = node(index - 1);
             prev.next=new Node<>(element,prev.next);
         }
-//        if (index == 0) //添加到0这个位置 新创建的next 指向的就是当初的first
-//        {
-//            first = new Node<>(element, first);
-//        } else {
-//            Node<E> prev = node(index - 1); //考虑index=0的情况
-//            prev.next = new Node<>(element, prev.next); //size位置的时候 prev.next 是null
-//        }
         size++;
     }
 
@@ -80,14 +73,6 @@ public class SingleLinkedList<E> extends AbstractList<E> {
     @Override
     public E remove(int index) {
         rangeCheck(index);
-//        Node<E> node = first;
-//        if (index == 0) {
-//            first = first.next;
-//        }else {
-//            Node<E> prev = node(index - 1);
-//            node=prev.next;
-//            prev.next=node.next;
-//        }
         Node<E> node = first;
         if(index==0)
         {
@@ -98,7 +83,6 @@ public class SingleLinkedList<E> extends AbstractList<E> {
             node=prev.next;
             prev.next=node.next;
         }
-
         size--;
         return node.element;
     }
@@ -135,6 +119,20 @@ public class SingleLinkedList<E> extends AbstractList<E> {
             this.element = element;
             this.next = next;
         }
+
+        @Override
+        public String toString() {
+           StringBuilder sb=new StringBuilder();
+           sb.append(element).append("_");
+           if(next!=null)
+           {
+               sb.append(next.element);
+           }
+           else {
+               sb.append("null");
+           }
+           return sb.toString();
+        }
     }
 
     private Node<E> node(int index) {
@@ -155,7 +153,7 @@ public class SingleLinkedList<E> extends AbstractList<E> {
             if (i != 0) {
                 stringBuilder.append(",");
             }
-            stringBuilder.append(node.element);
+            stringBuilder.append(node);
             node = node.next;
         }
         stringBuilder.append("]");

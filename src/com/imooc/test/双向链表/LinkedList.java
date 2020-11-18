@@ -5,11 +5,12 @@ import com.imooc.test.单链表.AbstractList;
 /**
  * gc root 对象 被栈指针（局部变量）指向的对象
  * 双向链表对比 单向链表 操作数量节省了一半
- *  总结：
- *  如果你频繁在尾部添加、删除 元素 双向链表、动态数组都可以
- *  如果你在首部添加、删除 用双向链表
- *  如果你在任意位置 添加、删除元素 用双向链表
- *  频繁查询 用动态数组
+ * 总结：
+ * 如果你频繁在尾部添加、删除 元素 双向链表、动态数组都可以
+ * 如果你在首部添加、删除 用双向链表
+ * 如果你在任意位置 添加、删除元素 用双向链表
+ * 频繁查询 用动态数组
+ *
  * @param <E>
  */
 public class LinkedList<E> extends AbstractList<E> {
@@ -69,7 +70,7 @@ public class LinkedList<E> extends AbstractList<E> {
     @Override
     public void add(int index, E element) {
         rangeCheckForAdd(index);
-        if (index == size) //往最后的位置添加元素
+       /* if (index == size) //往最后的位置添加元素
         {
             Node<E> OldLast = last;//原来的last
             //往尾部添加 就是把last 指向新添加的节点 然后原来的last的next 为新添加的节点
@@ -91,7 +92,31 @@ public class LinkedList<E> extends AbstractList<E> {
             } else {
                 prev.next = node;
             }
+        }*/
+        if(index==size)
+        {
+            Node<E> oldLast = last;
+            last = new Node<>(oldLast, element, null);
+            if(oldLast==null)
+            {
+                first=last;
+            }
+            else {
+                oldLast.next=last;
+            }
+        }else {
+            Node<E> next = node(index);
+            Node<E> prev = next.prev;
+            Node<E> node = new Node<>(prev, element, next);
+            next.prev=node;
+            if(prev==null)
+            {
+                first=node;
+            }else {
+                prev.next=node;
+            }
         }
+
 
         size++;
     }
@@ -108,7 +133,7 @@ public class LinkedList<E> extends AbstractList<E> {
     @Override
     public E remove(int index) {
         rangeCheck(index);
-        Node<E> node = node(index);
+       /* Node<E> node = node(index);
         Node<E> next = node.next;
         Node<E> prev = node.prev;
         if (prev == null) { //等价于index==0
@@ -117,6 +142,19 @@ public class LinkedList<E> extends AbstractList<E> {
             prev.next = next;
         }
         if (next == null) { //等价于 index==size-1
+            last = prev;
+        } else {
+            next.prev = prev;
+        }*/
+        Node<E> node = node(index);
+        Node<E> prev = node.prev;
+        Node<E> next = node.next;
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+        }
+        if (next == null) {
             last = prev;
         } else {
             next.prev = prev;
@@ -162,23 +200,19 @@ public class LinkedList<E> extends AbstractList<E> {
 
         @Override
         public String toString() {
-           StringBuilder sb=new StringBuilder();
-           if(prev!=null)
-           {
-               sb.append(prev.element);
-           }
-           else {
-               sb.append("null");
-           }
-           sb.append("_").append(element).append("_");
-           if(next!=null)
-           {
-               sb.append(next.element);
-           }
-           else {
-               sb.append("null");
-           }
-           return sb.toString();
+            StringBuilder sb = new StringBuilder();
+            if (prev != null) {
+                sb.append(prev.element);
+            } else {
+                sb.append("null");
+            }
+            sb.append("_").append(element).append("_");
+            if (next != null) {
+                sb.append(next.element);
+            } else {
+                sb.append("null");
+            }
+            return sb.toString();
         }
     }
 

@@ -1,12 +1,7 @@
-package com.imooc.test.循环链表;
+package com.imooc.test.单向循环链表;
 
 import com.imooc.test.单链表.AbstractList;
 
-/**
- * 单向循环链表
- *
- * @param <E>
- */
 public class SingleCircleLinkedList<E> extends AbstractList<E> {
     private Node<E> first;
 
@@ -36,7 +31,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
      * * 最好 O(1)
      * * 最坏O(n)
      * * 平均O(n)
-     *
      * @param index
      * @param element
      * @return
@@ -50,12 +44,11 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
     }
 
     /**
-     * * 时间复杂度  O(n)
-     * * 最好 O(1)
-     * * 最坏O(n)
-     * * 平均O(n)
-     * 网上说的链表添加复杂度为O（1） 实际上是指 添加那一时刻 指针的移动为O（1）
-     *
+     *  * 时间复杂度  O(n)
+     *      * 最好 O(1)
+     *      * 最坏O(n)
+     *      * 平均O(n)
+     *      网上说的链表添加复杂度为O（1） 实际上是指 添加那一时刻 指针的移动为O（1）
      * @param index
      * @param element
      */
@@ -68,33 +61,19 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
             Node<E> last = (size==0)?newFirst:node(size - 1);
             last.next=newFirst;
             first=newFirst;
-        }
-        else {
-            Node<E> prev = node(index - 1); //4  node为3
+
+        }else {
+            Node<E> prev = node(index - 1);
             prev.next=new Node<>(element,prev.next);
         }
-//        if (index == 0) //添加到0这个位置 新创建的next 指向的就是当初的first
-//        {
-//            //这是单向链表有的
-//            Node<E> newFirst = new Node<>(element, first);
-//            //拿到最后一个节点
-//            Node<E> last = (size==0)?newFirst:node(size-1);
-//            last.next = newFirst;
-//            first=newFirst;
-//
-//        } else {
-//            Node<E> prev = node(index - 1); //考虑index=0的情况
-//            prev.next = new Node<>(element, prev.next); //size位置的时候 prev.next 是null
-//        }
         size++;
     }
 
     /**
-     * * 时间复杂度  O(n)
-     * * 最好 O(1)
-     * * 最坏O(n)
-     * * 平均O(n)
-     *
+     *  * 时间复杂度  O(n)
+     *      * 最好 O(1)
+     *      * 最坏O(n)
+     *      * 平均O(n)
      * @param index
      * @return
      */
@@ -104,39 +83,22 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
         Node<E> node = first;
         if(index==0)
         {
-            first=first.next;
+            if(size==1)
+            {
+                first=null;
+            }
+            else {
+                Node<E> last = node(size - 1);
+                first=first.next;
+                last.next=first;
+
+            }
         }
         else {
             Node<E> prev = node(index - 1);
             node=prev.next;
             prev.next=node.next;
         }
-//        Node<E> node = first;
-//        if(index==0)
-//        {
-//            first=first.next;
-//        }
-//        else {
-//            Node<E> prev = node(index - 1);
-//            node=prev.next;
-//            prev.next=node.next;
-//        }
-//        if (index == 0) {
-//            if(size==1)
-//            {
-//                first=null;
-//            }
-//            else {
-//                //这句必须在first=first.next 前面 因为 node方法会用到first
-//                Node<E> last = node(size - 1);
-//                first = first.next;//这是单向链表有的
-//                last.next=first;
-//            }
-//        } else {
-//            Node<E> prev = node(index - 1);
-//            node = prev.next;
-//            prev.next = node.next;
-//        }
         size--;
         return node.element;
     }
@@ -176,9 +138,9 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
 
         @Override
         public String toString() {
-            StringBuilder sb=new StringBuilder();
-            sb.append(element).append("_").append(next.element);
-            return sb.toString();
+           StringBuilder sb=new StringBuilder();
+           sb.append(element).append("_").append(next.element);
+           return sb.toString();
         }
     }
 
