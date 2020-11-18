@@ -1,4 +1,4 @@
-package com.imooc.test.array;
+package com.imooc.test.数组;
 
 
 import com.imooc.test.单链表.AbstractList;

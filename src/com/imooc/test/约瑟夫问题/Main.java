@@ -1,18 +1,15 @@
-package com.imooc.test.测试链表;
+package com.imooc.test.约瑟夫问题;
 
-import com.imooc.test.单向循环链表.SingleCircleLinkedList;
 import com.imooc.test.单链表.List;
-import com.imooc.test.单链表.SingleLinkedList;
 import com.imooc.test.双向链表.Asserts;
-import com.imooc.test.双向链表.LinkedList;
 
 public class Main {
     static void testList(List<Integer> list) {
         list.add(11);
         list.add(22);
         list.add(33);
-        list.add(44);
-
+        list.add(44); //11 22 33 44
+//
         list.add(0, 55); // [55, 11, 22, 33, 44]
         list.add(2, 66); // [55, 11, 66, 22, 33, 44]
         list.add(list.size(), 77); // [55, 11, 66, 22, 33, 44, 77]
@@ -30,8 +27,25 @@ public class Main {
 
         System.out.println(list);
     }
+    static void josephus() {
+        LinkedCircleList<Integer> list=new LinkedCircleList<>();
+        for (int i = 1; i <= 8; i++) {
+            list.add(i);
+        }
+
+        // 指向头结点（指向1）
+        list.reset();
+
+        while (!list.isEmpty()) {
+            list.next();
+            list.next();
+            System.out.println(list.remove());
+        }
+    }
+
 
     public static void main(String[] args) {
+        josephus();
 //        testList(new ArrayList<>());
 //        testList(new LinkedList<>());
         //testList(new SingleLinkedList<>());
@@ -40,6 +54,15 @@ public class Main {
         //testList(new SingleCircleLinkedList<>());
 
         //testList(new SingleLinkedList<>());
-        testList(new LinkedList<>());
+        //testList(new LinkedList<>());
+        //testList(new SingleLinkedList<>());
+        //testList(new SingleCircleLinkedList<>());
+        //testList(new LinkedList<>());
+        //testList(new LinkedCircleList<>());
+        //testList(new SingleLinkedList<>());
+        //testList(new SingleCircleLinkedList<>());
+        //testList(new LinkedList<>());
+        //testList(new LinkedList<>());
+        //testList(new LinkedCircleList<>());
     }
 }

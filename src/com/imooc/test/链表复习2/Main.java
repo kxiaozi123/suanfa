@@ -28,6 +28,7 @@ public class Main {
         System.out.println(list);
     }
 
+
     public static void main(String[] args) {
 //        testList(new ArrayList<>());
 //        testList(new LinkedList<>());
