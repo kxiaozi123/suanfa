@@ -21,6 +21,11 @@ public class CircleQueue<E> {
     }
 
     public void clear() {
+        for (int i = 0; i < size; i++) {
+            elements[index(i)]=null;
+        }
+        front=0;
+        size=0;
     }
 
     public void enQueue(E element) {
