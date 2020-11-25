@@ -1,6 +1,7 @@
 package com.imooc.test.AVL树自己代码.tree;
 
-import com.imooc.test.AVL树.printer.BinaryTreeInfo;
+
+import com.imooc.test.AVL树自己代码.printer.BinaryTreeInfo;
 
 import java.util.LinkedList;
 import java.util.Queue;
