@@ -13,7 +13,7 @@ public class AVLTree<E> extends BST<E> {
 	
 	@Override
 	protected void afterAdd(Node<E> node) {
-		while ((node = node.parent) != null) {
+		while ((node = node.parent) != null) {	 //找到最低的失衡节点
 			//进入while循环必定是node的parent
 			if (isBalanced(node)) {
 				// 更新高度
@@ -102,7 +102,7 @@ public class AVLTree<E> extends BST<E> {
 			r.parent.left = d;
 		} else if (r.isRightChild()) {
 			r.parent.right = d;
-		} else {
+		} else { //它不是左边 又不是 右边 他就是root
 			root = d;
 		}
 		
@@ -201,7 +201,8 @@ public class AVLTree<E> extends BST<E> {
 			int rightHeight = right == null ? 0 : ((AVLNode<E>)right).height;
 			if (leftHeight > rightHeight) return left;
 			if (leftHeight < rightHeight) return right;
-			//同方向的 如果自己是父节点的左  返回左
+			//如果高度一样的话 返回跟node一样的方向  我是父子树的哪一边 我就返回哪一边
+			//如果我是父节点的左 我就返回左
 			return isLeftChild() ? left : right;
 		}
 		
